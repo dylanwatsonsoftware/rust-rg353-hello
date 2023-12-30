@@ -1,11 +1,15 @@
 # Rust RG353VS Hello
 
 ## Prerequisites
-- Rust
-- Zig
+- Rust (`brew install rust`)
+- Zig (`brew install zig`)
+- pkg-config
+- alsa-lib
 
 
 See Makefile for commands
+# Run
+`make run`
 
 # RG353 Build
 `make zig`

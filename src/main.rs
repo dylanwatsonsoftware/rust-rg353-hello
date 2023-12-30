@@ -1,22 +1,55 @@
-extern crate kiss3d;
+//! Shows how to render simple primitive shapes with a single color.
 
-use kiss3d::nalgebra::{Vector3, UnitQuaternion};
-use kiss3d::window::Window;
-use kiss3d::light::Light;
+use bevy::{prelude::*, sprite::MaterialMesh2dBundle};
 
 fn main() {
-    println!("Hello, Kiss3D!");
+    App::new()
+        .add_plugins(DefaultPlugins)
+        .add_systems(Startup, setup)
+        .run();
+}
 
-    let mut window = Window::new("Kiss3d: cube");
-    let mut c      = window.add_cube(1.0, 1.0, 1.0);
+fn setup(
+    mut commands: Commands,
+    mut meshes: ResMut<Assets<Mesh>>,
+    mut materials: ResMut<Assets<ColorMaterial>>,
+) {
+    commands.spawn(Camera2dBundle::default());
 
-    c.set_color(1.0, 0.0, 0.0);
+    // Circle
+    commands.spawn(MaterialMesh2dBundle {
+        mesh: meshes.add(shape::Circle::new(50.).into()).into(),
+        material: materials.add(ColorMaterial::from(Color::PURPLE)),
+        transform: Transform::from_translation(Vec3::new(-150., 0., 0.)),
+        ..default()
+    });
 
-    window.set_light(Light::StickToCamera);
+    // Rectangle
+    commands.spawn(SpriteBundle {
+        sprite: Sprite {
+            color: Color::rgb(0.25, 0.25, 0.75),
+            custom_size: Some(Vec2::new(50.0, 100.0)),
+            ..default()
+        },
+        transform: Transform::from_translation(Vec3::new(-50., 0., 0.)),
+        ..default()
+    });
 
-    let rot = UnitQuaternion::from_axis_angle(&Vector3::y_axis(), 0.014);
+    // Quad
+    commands.spawn(MaterialMesh2dBundle {
+        mesh: meshes
+            .add(shape::Quad::new(Vec2::new(50., 100.)).into())
+            .into(),
+        material: materials.add(ColorMaterial::from(Color::LIME_GREEN)),
+        transform: Transform::from_translation(Vec3::new(50., 0., 0.)),
+        ..default()
+    });
 
-    while window.render() {
-        c.prepend_to_local_rotation(&rot);
-    }
+    // Hexagon
+    commands.spawn(MaterialMesh2dBundle {
+        mesh: meshes.add(shape::RegularPolygon::new(50., 6).into()).into(),
+        material: materials.add(ColorMaterial::from(Color::TURQUOISE)),
+        transform: Transform::from_translation(Vec3::new(150., 0., 0.)),
+        ..default()
+    });
 }

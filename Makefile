@@ -3,8 +3,13 @@
 clean:
 	rm -rf target
 
-run: clean
-	cargo run
+run:
+	cargo run --features bevy/dynamic_linking
 
 zig: clean
-	cargo zigbuild --target arm-unknown-linux-gnueabihf
+	PKG_CONFIG=/usr/local/bin/pkg-config cargo zigbuild --target arm-unknown-linux-gnueabihf
+
+deploy:
+
+logs:
+	tail "/Volumes/AMBER ROMS/ports/rust-hello/log.txt"
