@@ -6,5 +6,5 @@ clean:
 run: clean
 	cargo run
 
-zig:
+zig: clean
 	cargo zigbuild --target arm-unknown-linux-gnueabihf
