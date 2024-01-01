@@ -1,7 +1,7 @@
 name: Tests and release
 on: [push, pull_request]
 env:
-  CRATE_NAME: ubi
+  CRATE_NAME: rust-hello
   GITHUB_TOKEN: ${{ github.token }}
   RUST_BACKTRACE: 1
 jobs:
@@ -15,19 +15,24 @@ jobs:
           - os_name: Linux-arm
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
-            bin: ubi
-            name: ubi-Linux-arm-musl.tar.gz
-          - os_name: macOS-x86_64
-            os: macOS-latest
-            target: x86_64-apple-darwin
-            bin: ubi
-            name: ubi-Darwin-x86_64.tar.gz
-          - os_name: macOS-aarch64
-            os: macOS-latest
-            target: aarch64-apple-darwin
-            bin: ubi
-            name: ubi-Darwin-aarch64.tar.gz
-            skip_tests: true
+            bin: rust-hello
+            name: rust-hello-Linux-arm-musl.tar.gz
+          # - os_name: macOS-x86_64
+          #   os: macOS-latest
+          #   target: x86_64-apple-darwin
+          #   bin: rust-hello
+          #   name: rust-hello-Darwin-x86_64.tar.gz
+          # - os_name: macOS-aarch64
+          #   os: macOS-latest
+          #   target: aarch64-apple-darwin
+          #   bin: rust-hello
+          #   name: rust-hello-Darwin-aarch64.tar.gz
+          #   skip_tests: true
+          - os_name: Windows-x86_64
+            os: windows-latest
+            target: x86_64-pc-windows-msvc
+            bin: rust-hello.exe
+            name: rust-hello-Windows-x86_64.zip          
         toolchain:
           - stable
     steps:
@@ -74,8 +79,8 @@ jobs:
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: ubi-${{ matrix.platform.os_name }}
-          path: "ubi-*"
+          name: rust-hello-${{ matrix.platform.os_name }}
+          path: "rust-hello-*"
         if: matrix.toolchain == 'stable'
       - name: Generate SHA-256
         run: shasum -a 256 ${{ matrix.platform.name }}
@@ -88,6 +93,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           draft: true
-          files: "ubi*"
+          files: "rust-hello*"
           body_path: Changes.md
         if: matrix.toolchain == 'stable'
