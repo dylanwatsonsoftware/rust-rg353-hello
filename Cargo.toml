@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 bevy = "0.12.1"
+openssl = { version = "0.10.35", features = ["vendored"] }
 
 [target.armv7-unknown-linux-gnueabihf]
 linker = "arm-linux-gnueabi-gcc"
