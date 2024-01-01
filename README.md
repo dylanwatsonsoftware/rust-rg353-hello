@@ -4,7 +4,7 @@
 - Rust (`brew install rust`)
 - Zig (`brew install zig`)
 - pkg-config
-- alsa-lib
+- alsa-lib (linux only)
 
 
 See Makefile for commands
