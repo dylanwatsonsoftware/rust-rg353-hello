@@ -159,7 +159,7 @@ jobs:
         with:
           name: ubi-${{ matrix.platform.os_name }}
           path: "ubi-*"
-        if: matrix.toolchain == 'stable' && github.ref == 'refs/tags/test-release'
+        if: matrix.toolchain == 'stable'
       - name: Generate SHA-256
         run: shasum -a 256 ${{ matrix.platform.name }}
         if: |
