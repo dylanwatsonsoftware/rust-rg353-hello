@@ -71,19 +71,19 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
         with:
-          targets: x86_64-unknown-linux-gnu
+          targets: arm-unknown-linux-gnueabihf
       - name: install dependencies
         run: |
           sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
 
       - name: Build
         run: |
-          cargo build --release --target x86_64-unknown-linux-gnu
+          cargo build --release --target arm-unknown-linux-gnueabihf
 
       - name: Prepare package
         run: |
           mkdir linux
-          cp target/x86_64-unknown-linux-gnu/release/${{ env.binary }} linux/
+          cp target/arm-unknown-linux-gnueabihf/release/${{ env.binary }} linux/
           cp -r assets linux/
 
       - name: Package as a zip
