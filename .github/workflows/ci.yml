@@ -17,85 +17,11 @@ jobs:
           # - sparc64-unknown-linux-gnu - cannot compile openssl-sys
           # - x86_64-unknown-illumos - weird error compiling openssl - "bin/sh: 1: granlib: not found"
 
-          - os_name: FreeBSD-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-freebsd
-            bin: ubi
-            name: ubi-FreeBSD-x86_64.tar.gz
-            skip_tests: true
-          - os_name: Linux-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-linux-musl
-            bin: ubi
-            name: ubi-Linux-x86_64-musl.tar.gz
-          - os_name: Linux-aarch64
-            os: ubuntu-20.04
-            target: aarch64-unknown-linux-musl
-            bin: ubi
-            name: ubi-Linux-aarch64-musl.tar.gz
           - os_name: Linux-arm
             os: ubuntu-20.04
             target: arm-unknown-linux-musleabi
             bin: ubi
             name: ubi-Linux-arm-musl.tar.gz
-          - os_name: Linux-i686
-            os: ubuntu-20.04
-            target: i686-unknown-linux-musl
-            bin: ubi
-            name: ubi-Linux-i686-musl.tar.gz
-            skip_tests: true
-          - os_name: Linux-powerpc
-            os: ubuntu-20.04
-            target: powerpc-unknown-linux-gnu
-            bin: ubi
-            name: ubi-Linux-powerpc-gnu.tar.gz
-            skip_tests: true
-          - os_name: Linux-powerpc64
-            os: ubuntu-20.04
-            target: powerpc64-unknown-linux-gnu
-            bin: ubi
-            name: ubi-Linux-powerpc64-gnu.tar.gz
-            skip_tests: true
-          - os_name: Linux-powerpc64le
-            os: ubuntu-20.04
-            target: powerpc64le-unknown-linux-gnu
-            bin: ubi
-            name: ubi-Linux-powerpc64le.tar.gz
-            skip_tests: true
-          - os_name: Linux-riscv64
-            os: ubuntu-20.04
-            target: riscv64gc-unknown-linux-gnu
-            bin: ubi
-            name: ubi-Linux-riscv64gc-gnu.tar.gz
-          - os_name: Linux-s390x
-            os: ubuntu-20.04
-            target: s390x-unknown-linux-gnu
-            bin: ubi
-            name: ubi-Linux-s390x-gnu.tar.gz
-            skip_tests: true
-          - os_name: NetBSD-x86_64
-            os: ubuntu-20.04
-            target: x86_64-unknown-netbsd
-            bin: ubi
-            name: ubi-NetBSD-x86_64.tar.gz
-            skip_tests: true
-          - os_name: Windows-aarch64
-            os: windows-latest
-            target: aarch64-pc-windows-msvc
-            bin: ubi.exe
-            name: ubi-Windows-aarch64.zip
-            skip_tests: true
-          - os_name: Windows-i686
-            os: windows-latest
-            target: i686-pc-windows-msvc
-            bin: ubi.exe
-            name: ubi-Windows-i686.zip
-            skip_tests: true
-          - os_name: Windows-x86_64
-            os: windows-latest
-            target: x86_64-pc-windows-msvc
-            bin: ubi.exe
-            name: ubi-Windows-x86_64.zip
           - os_name: macOS-x86_64
             os: macOS-latest
             target: x86_64-apple-darwin
@@ -107,10 +33,84 @@ jobs:
             bin: ubi
             name: ubi-Darwin-aarch64.tar.gz
             skip_tests: true
+          # - os_name: FreeBSD-x86_64
+          #   os: ubuntu-20.04
+          #   target: x86_64-unknown-freebsd
+          #   bin: ubi
+          #   name: ubi-FreeBSD-x86_64.tar.gz
+          #   skip_tests: true
+          # - os_name: Linux-x86_64
+          #   os: ubuntu-20.04
+          #   target: x86_64-unknown-linux-musl
+          #   bin: ubi
+          #   name: ubi-Linux-x86_64-musl.tar.gz
+          # - os_name: Linux-aarch64
+          #   os: ubuntu-20.04
+          #   target: aarch64-unknown-linux-musl
+          #   bin: ubi
+          #   name: ubi-Linux-aarch64-musl.tar.gz            
+          # - os_name: Linux-i686
+          #   os: ubuntu-20.04
+          #   target: i686-unknown-linux-musl
+          #   bin: ubi
+          #   name: ubi-Linux-i686-musl.tar.gz
+          #   skip_tests: true
+          # - os_name: Linux-powerpc
+          #   os: ubuntu-20.04
+          #   target: powerpc-unknown-linux-gnu
+          #   bin: ubi
+          #   name: ubi-Linux-powerpc-gnu.tar.gz
+          #   skip_tests: true
+          # - os_name: Linux-powerpc64
+          #   os: ubuntu-20.04
+          #   target: powerpc64-unknown-linux-gnu
+          #   bin: ubi
+          #   name: ubi-Linux-powerpc64-gnu.tar.gz
+          #   skip_tests: true
+          # - os_name: Linux-powerpc64le
+          #   os: ubuntu-20.04
+          #   target: powerpc64le-unknown-linux-gnu
+          #   bin: ubi
+          #   name: ubi-Linux-powerpc64le.tar.gz
+          #   skip_tests: true
+          # - os_name: Linux-riscv64
+          #   os: ubuntu-20.04
+          #   target: riscv64gc-unknown-linux-gnu
+          #   bin: ubi
+          #   name: ubi-Linux-riscv64gc-gnu.tar.gz
+          # - os_name: Linux-s390x
+          #   os: ubuntu-20.04
+          #   target: s390x-unknown-linux-gnu
+          #   bin: ubi
+          #   name: ubi-Linux-s390x-gnu.tar.gz
+          #   skip_tests: true
+          # - os_name: NetBSD-x86_64
+          #   os: ubuntu-20.04
+          #   target: x86_64-unknown-netbsd
+          #   bin: ubi
+          #   name: ubi-NetBSD-x86_64.tar.gz
+          #   skip_tests: true
+          # - os_name: Windows-aarch64
+          #   os: windows-latest
+          #   target: aarch64-pc-windows-msvc
+          #   bin: ubi.exe
+          #   name: ubi-Windows-aarch64.zip
+          #   skip_tests: true
+          # - os_name: Windows-i686
+          #   os: windows-latest
+          #   target: i686-pc-windows-msvc
+          #   bin: ubi.exe
+          #   name: ubi-Windows-i686.zip
+          #   skip_tests: true
+          # - os_name: Windows-x86_64
+          #   os: windows-latest
+          #   target: x86_64-pc-windows-msvc
+          #   bin: ubi.exe
+          #   name: ubi-Windows-x86_64.zip
         toolchain:
           - stable
-          - beta
-          - nightly
+          # - beta
+          # - nightly
     steps:
       - uses: actions/checkout@v4
       - name: Cache cargo & target directories
@@ -151,9 +151,7 @@ jobs:
           fi
           cd -
         if: |
-          matrix.toolchain == 'stable' &&
-          ( startsWith( github.ref, 'refs/tags/v' ) ||
-            github.ref == 'refs/tags/test-release' )
+          matrix.toolchain == 'stable'
       - name: Publish release artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -173,4 +171,4 @@ jobs:
           draft: true
           files: "ubi*"
           body_path: Changes.md
-        if: matrix.toolchain == 'stable' && startsWith( github.ref, 'refs/tags/v' )
+        if: matrix.toolchain == 'stable'
