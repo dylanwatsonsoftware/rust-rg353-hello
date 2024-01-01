@@ -78,7 +78,7 @@ jobs:
 
       - name: Build
         run: |
-          PKG_CONFIG_SYSROOT_DIR=/ cargo build --release --target arm-unknown-linux-gnueabihf
+          PKG_CONFIG_SYSROOT_DIR=/ cargo zigbuild --release --target arm-unknown-linux-gnueabihf
 
       - name: Prepare package
         run: |
