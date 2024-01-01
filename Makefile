@@ -16,3 +16,6 @@ deploy:
 
 logs:
 	tail "/Volumes/AMBER ROMS/ports/rust-hello/log.txt"
+
+fmt:
+	cargo fmt --all
