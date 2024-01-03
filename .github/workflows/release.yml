@@ -75,7 +75,7 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
       - name: install dependencies
         run: |
-          sudo apt-get update; sudo apt-get install libasound-dev:armhf pkg-config libx11-dev libasound2-dev libudev-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+          sudo apt-get update; sudo apt-get install libasound2-dev:armhf pkg-config libx11-dev libasound2-dev libudev-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
           cargo install cargo-zigbuild
 
       - name: Build
