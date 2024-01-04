@@ -75,9 +75,8 @@ jobs:
       - uses: goto-bus-stop/setup-zig@v2
       - name: install dependencies
         run: |
-          sudo apt-get clean
-          sudo apt-get autoclean
-          sudo rm -rf /var/lib/apt/lists/
+          echo "deb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports/ jammy main multiverse restricted universe" | sudo tee -a /etc/apt/sources.list
+          echo "deb [arch=armhf] http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main multiverse restricted universe" | sudo tee -a /etc/apt/sources.list
           sudo apt update
           sudo apt-get update; sudo apt-get install pkg-config libx11-dev libasound2-dev libudev-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
           cargo install cargo-zigbuild
