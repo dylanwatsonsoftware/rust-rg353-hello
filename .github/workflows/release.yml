@@ -85,6 +85,7 @@ jobs:
 
       - name: Build
         run: |
+          sudo cat /etc/apt/sources.list
           PKG_CONFIG_SYSROOT_DIR=/ cargo zigbuild --release --target arm-unknown-linux-gnueabihf
 
       - name: Prepare package
