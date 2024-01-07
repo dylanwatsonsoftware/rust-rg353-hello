@@ -64,6 +64,7 @@ jobs:
 
   # Build for Linux
   release-linux:
+    if: false
     runs-on: ubuntu-latest
 
     steps:
